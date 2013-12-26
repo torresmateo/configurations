@@ -15,6 +15,30 @@
                   tab-width 4
                   indent-tabs-mode t)
 
+
+;;Carga de php-mode
+(add-to-list 'load-path "~/emacs-modes/php-mode-master/")
+(require 'php-mode)
+(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
+
+
+;;el-get
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+      "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+    (let (el-get-master-branch)
+      (goto-char (point-max))
+      (eval-print-last-sexp))))
+
+(el-get 'sync)
+
+;;Python Auto-Completion
+(add-hook 'python-mode-hook 'jedi:setup)
+
+;;Configuraciones para Mac OS X
 (when (eq system-type 'darwin)
       ;; default Latin font (e.g. Consolas)
       (set-face-attribute 'default nil :family "Monaco")
