@@ -1,9 +1,4 @@
 
-(add-hook 'python-mode-hook
-      (lambda ()
-        (setq indent-tabs-mode t)
-        (setq tab-width 4)
-        (setq python-indent 4)))
 
 
 (custom-set-variables
@@ -21,10 +16,25 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#2e3436" :foreground "#eeeeec" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "unknown" :family "Monospace")))))
+
+;;indentado con tabs de 4 espacios
  (setq-default c-basic-offset 4
                   tab-width 4
                   indent-tabs-mode t)
 
+;; para python
+(add-hook 'python-mode-hook
+      (lambda ()
+        (setq indent-tabs-mode t)
+        (setq tab-width 4)
+        (setq python-indent 4)))
+
+;;para php
+(add-hook 'php-mode-hook
+      (lambda ()
+		(setq indent-tabs-mode t)
+		(setq tab-width 4)
+		(setq c-basic-offset 4)))
 
 ;;Carga de php-mode
 (add-to-list 'load-path "~/emacs-modes/php-mode-master/")
