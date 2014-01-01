@@ -1,5 +1,5 @@
 ;;default directory is home folder
-(cd "~")
+(cd "~/")
 
 ;;uncomment this when in need to use virtualenv 
 ;;(setenv "PATH" (concat (getenv "PATH") ":" "/usr/local/bin"))
