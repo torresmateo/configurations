@@ -20,6 +20,9 @@ Plugin 'Valloric/YouCompleteMe'
 " NERDTree
 Plugin 'scrooloose/nerdtree'
 
+" Powerline
+Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+
 " required by Vundle
 call vundle#end()
 
@@ -44,6 +47,12 @@ set expandtab
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+" Powerline
+set laststatus=2
+set showtabline=2
+set noshowmode
 " Color Scheme
 colorscheme darcula
+
+set term=xterm-256color
 
