@@ -23,6 +23,8 @@ Plugin 'scrooloose/nerdtree'
 " Powerline
 Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 
+" Multiple Cursors
+" Plugin 'terryma/vim-multiple-cursors'
 " required by Vundle
 call vundle#end()
 
@@ -51,8 +53,8 @@ set expandtab
 set laststatus=2
 set showtabline=2
 set noshowmode
+
 " Color Scheme
 colorscheme darcula
 
 set term=xterm-256color
-
