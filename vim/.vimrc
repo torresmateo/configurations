@@ -23,6 +23,9 @@ Plugin 'scrooloose/nerdtree'
 " Powerline
 Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 
+" Vim Markdown
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 " Multiple Cursors
 " Plugin 'terryma/vim-multiple-cursors'
 " required by Vundle
@@ -58,3 +61,6 @@ set noshowmode
 colorscheme darcula
 
 set term=xterm-256color
+
+" .md files are markdown
+autocmd BufNewFile,BufRead *.md set filetype=markdown
