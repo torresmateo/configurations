@@ -62,5 +62,8 @@ colorscheme darcula
 
 set term=xterm-256color
 
+" Default Font
+set guifont=Source\ Code\ Pro\ for\ Powerline:h14
+
 " .md files are markdown
 autocmd BufNewFile,BufRead *.md set filetype=markdown
