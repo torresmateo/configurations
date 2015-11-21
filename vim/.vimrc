@@ -24,7 +24,10 @@ Plugin 'scrooloose/nerdtree'
 " Plugin 'scrooloose/syntastic'
 
 " Powerline
-Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+"Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+" Vim airline, replacement of Powerline because it is faster
+Plugin 'bling/vim-airline'
 
 " Vim Markdown
 Plugin 'godlygeek/tabular'
@@ -60,14 +63,17 @@ set expandtab
 " Put your non-Plugin stuff after this line
 
 " Powerline
-set laststatus=2
-set showtabline=2
-set noshowmode
+"set laststatus=2
+"set showtabline=2
+"set noshowmode
+
+" Vim airline
+let g:airline_powerline_fonts = 1
 
 " Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
 "let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_auto_loc_list = 1
