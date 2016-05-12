@@ -93,3 +93,5 @@ set guifont=Source\ Code\ Pro\ for\ Powerline:h13
 
 " .md files are markdown
 autocmd BufNewFile,BufRead *.md set filetype=markdown
+" .tex files are latex
+" let g:tex_flavor = "latex"
