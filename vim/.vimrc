@@ -33,8 +33,14 @@ Plugin 'bling/vim-airline'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
+" Python Folding
+Plugin 'tmhedberg/SimpylFold'
+
 " Vim-Jinja2-Syntax
 Plugin 'Glench/Vim-Jinja2-Syntax'
+
+" Windows swap
+Plugin 'wesQ3/vim-windowswap'
 
 " Multiple Cursors
 " Plugin 'terryma/vim-multiple-cursors'
@@ -84,7 +90,8 @@ let g:airline_powerline_fonts = 1
 "let g:syntastic_javascript_checkers = ['jscs']
 
 " Color Scheme
-colorscheme onedark
+" colorscheme onedark
+colorscheme darcula
 
 set term=xterm-256color
 syntax on
