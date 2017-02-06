@@ -102,3 +102,10 @@ set guifont=Source\ Code\ Pro\ for\ Powerline:h13
 autocmd BufNewFile,BufRead *.md set filetype=markdown
 " .tex files are latex
 " let g:tex_flavor = "latex"
+
+set spell spelllang=en_gb
+set nospell
+
+" command that inserts the current time and date in a decent format
+command! Date r !date +'\%F \%R:\%S'
+
