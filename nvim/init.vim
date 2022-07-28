@@ -1,140 +1,124 @@
-" reload vimrc :so % 
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
+call plug#begin()
+" The default plugin directory will be as follows:
+"   - Vim (Linux/macOS): '~/.vim/plugged'
+"   - Vim (Windows): '~/vimfiles/plugged'
+"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
+" You can specify a custom plugin directory by passing it as the argument
+"   - e.g. `call plug#begin('~/.vim/plugged')`
+"   - Avoid using standard Vim directory names like 'plugin'
 
+" Make sure you use single quotes
 
-" Required by Vundle
-filetype off
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+" Plug 'junegunn/vim-easy-align'
 
-" set the runtime path to include Vundle and initalize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Any valid git URL is allowed
+" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
-" let Vundle manage Vundle
-Plugin 'gmarik/Vundle.vim'
+" Multiple Plug commands can be written in a single line using | separators
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
-" YouCompleteMe
-"Plugin 'Valloric/YouCompleteMe'
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
-" NERDTree
-Plugin 'scrooloose/nerdtree'
+" Using a non-default branch
+" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
-" Syntastic
-Plugin 'scrooloose/syntastic'
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+" Plug 'fatih/vim-go', { 'tag': '*' }
 
-" Vim airline, replacement of Powerline because it is faster
-Plugin 'bling/vim-airline'
+" Plugin options
+" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
-" Vim Markdown
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+" LSP
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/lsp_extensions.nvim'
 
-" Python Folding
-Plugin 'tmhedberg/SimpylFold'
+" CoC
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Vim-Jinja2-Syntax
-Plugin 'Glench/Vim-Jinja2-Syntax'
+" Plugin outside ~/.vim/plugged with post-update hook
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
-" Windows swap
-Plugin 'wesQ3/vim-windowswap'
+" Telescope (plenary is a requirement)
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
-" Rust language support 
-Plugin 'rust-lang/rust.vim'
+" Airline
+Plug 'bling/vim-airline'
 
 " gruvox color scheme
-Plugin 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 
-" Multiple Cursors
-" Plugin 'terryma/vim-multiple-cursors'
-" required by Vundle
-call vundle#end()
+" Tiltfile recognition
+Plug 'cappyzawa/starlark.vim'
 
-" required by Vundle
-filetype plugin indent on
+" Unmanaged plugin (manually installed and updated)
+" Plug '~/my-prototype-plugin'
+
+" Initialize plugin system
+call plug#end()
 
 " decent tabs
 set tabstop=4
 set shiftwidth=4
 set expandtab
 
-
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
-" Powerline
-"set laststatus=2
-"set showtabline=2
-"set noshowmode
-
-" Vim airline
 let g:airline_powerline_fonts = 1
-
-" Syntastic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-"
-"" Syntastic linters
-"let g:syntastic_javascript_checkers = ['jscs']
 
 " Color Scheme
 " colorscheme onedark
 colorscheme gruvbox
 let g:gruvbox_italic=1
 
-" set term=xterm-256color
+" Set completeopt to have a better completion experience
+" "help completeopt
+" menuone: popup even when there's only one match
+" noinsert: Do not insert text until a selection is made
+" noselect: Do not select, force user to selec one from the menu
+set completeopt=menuone,noinsert,noselect
 
-"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
-"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
-if (empty($TMUX))
-    if (has("nvim"))
-        "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-        let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-    endif
-    "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-    "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-    " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-    if (has("termguicolors"))
-        set termguicolors
-    endif
-endif
 
-syntax enable
-" Default Font
-" set guifont=Source\ Code\ Pro\ for\ Powerline:h13
-set guifont=Monaco:h11
-
-" .md files are markdown
-autocmd BufNewFile,BufRead *.md set filetype=markdown
-" .tex files are latex
-" let g:tex_flavor = "latex"
-
-set spell spelllang=en_gb
-set nospell
-
-" command that inserts the current time and date in a decent format
-command! Date r !date +'\%F \%R:\%S'
-
-" vim hardcodes background color erase even if the terminfo file does
-" not contain bce (not to mention that libvte based terminals
-" incorrectly contain bce in their terminfo files). This causes
-" incorrect background rendering when using a color theme with a
-" background color.
-let &t_ut=''
-set mouse=a
+" " Configure lsp
+" " https://github.com/neovim/nvim-lspconfig#rust_analyzer
+" lua <<EOF
+" 
+" -- nvim_lsp object
+" local nvim_lsp = require'lspconfig'
+" 
+" local capabilities = vim.lsp.protocol.make_client_capabilities()
+" capabilities.textDocument.completion.completionItem.snippetSupport = true
+" 
+" -- Enable rust_analyzer
+" nvim_lsp.rust_analyzer.setup({
+"     capabilities=capabilities,
+"     -- on_attach is a callback called when the language server attachs to the buffer
+"     -- on_attach = on_attach,
+"     settings = {
+"       -- to enable rust-analyzer settings visit:
+"       -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+"       ["rust-analyzer"] = {
+"         -- enable clippy diagnostics on save
+"         checkOnSave = {
+"           command = "clippy"
+"         },
+"       }
+"     }
+" })
+" 
+" -- Enable diagnostics
+" vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+"   vim.lsp.diagnostic.on_publish_diagnostics, {
+"     virtual_text = false,
+"     signs = true,
+"     update_in_insert = true,
+"   }
+" )
+" EOF
+" 
+" " Enable type inlay hints
+" autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs
+" \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
+" 
