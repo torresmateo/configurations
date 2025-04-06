@@ -1,0 +1,8 @@
+font-family="BerkeleyMono Nerd Font"
+font-size=16
+theme = "GruvboxDark"
+# font-feature = -liga
+# font-feature = -calt
+# font-feature = -dlig
+window-inherit-font-size = false
+macos-option-as-alt = "left"
